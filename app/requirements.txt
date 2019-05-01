@@ -10,3 +10,4 @@ SQLAlchemy>=1.1.11
 Werkzeug>=0.12.2
 configparser
 jira
+bas64
