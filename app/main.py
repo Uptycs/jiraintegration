@@ -163,7 +163,7 @@ def alert():
         return jsonify({'issue': str(query[0]),
                         'project': jira_project,
                         'summary': jira_summary,
-                        'description': jira_description,
+                        'alert_json': alert_json,
                         'issuetype': jira_issue_type})
     else:
         new_issue =  jira.create_issue(project=jira_project,
@@ -173,8 +173,9 @@ def alert():
         return jsonify({'issue': new_issue.key,
                         'project': jira_project,
                         'summary': jira_summary,
-                        'description': jira_description,
+                        'alert_json': alert_json,
                         'issuetype': {'name': jira_issue_type}})
+    abort(400)
     return jsonify({'error': 'non able to create/update jira'})
 
 @app.route('/api/users/<int:id>')
